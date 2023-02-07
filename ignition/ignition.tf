@@ -1,5 +1,5 @@
 resource "azurerm_storage_account" "ignition" {
-  name                     = "ignition${local.cluster_nr}"
+  name                     = "ign${local.cluster_nr}"
   resource_group_name      = var.resource_group_name
   location                 = var.azure_region
   account_tier             = "Standard"
@@ -30,6 +30,8 @@ data "azurerm_storage_account_sas" "ignition" {
   permissions {
     read    = true
     list    = true
+    tag	    = false
+    filter  = false
     create  = false
     add     = false
     delete  = false
